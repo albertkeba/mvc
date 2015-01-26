@@ -1,0 +1,18 @@
+{
+  "name": "mvc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "express": "^4.11.1",
+    "supervisor": "^0.6.0",
+    "underscore": "^1.4.4",
+	"express-handlebars":""
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "supervisor index.js"
+  },
+  "author": "aka",
+  "license": "ISC"
+}
