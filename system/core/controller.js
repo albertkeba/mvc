@@ -1,14 +1,11 @@
-/*jslint white: true, nomen: true*/
+/*jslint white: true, nomen: true, devel: true*/
 /*global require, module*/
-var _ = require('underscore');
-
-module.exports = {
-	name: 'base',
-	extend: function ( child ) {
-		'use strict';
-		return _.extend({}, this, child);
-	},
-	run: function ( req, res, next ) {
-		'use strict';
-	}
-};
+module.exports = (function(){
+	'use strict';
+	
+	function Controller(){}
+	
+	Controller.prototype.run = function( req, res, next ){};
+	
+	return Controller;
+}());

@@ -5,11 +5,10 @@
   "dependencies": {
     "body-parser": "^1.10.2",
     "express": "^4.11.1",
-    "supervisor": "^0.6.0",
-    "underscore": "^1.4.4",
-	"express-handlebars":""
+    "express-handlebars": "",
+    "mysql": "^2.5.4",
+    "supervisor": "^0.6.0"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "supervisor index.js"
   },
