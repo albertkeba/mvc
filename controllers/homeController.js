@@ -2,7 +2,7 @@
 /*global require, module*/
 var Controller = require('../system/core/controller');
 
-module.exports = (function(){
+module.exports.controller = (function(){
 	'use strict';
 	
 	var _name	= 'Home',
