@@ -2,7 +2,7 @@
 /*global require, module*/
 var Controller = require('../system/core/controller');
 
-module.exports.controller = (function(){
+module.exports = (function(){
 	'use strict';
 	
 	var _name	= 'Home',
@@ -11,9 +11,17 @@ module.exports.controller = (function(){
 	function HomeController(){}
 	
 	HomeController.prototype = Object.create( Controller.prototype );
-	
-	HomeController.prototype.run = function( req, res, next ){
+		
+	HomeController.prototype.index = function( req, res, next ){
 		res.render('home', {title: 'Repertoire de contacts'});
+	};
+	
+	HomeController.prototype.test = function( req, res, next ){
+		res.send('Test fn!');
+	};
+	
+	HomeController.prototype.check = function( req, res, next ){
+		res.send('Check fn!');
 	};
 	
 	HomeController.prototype.getContent = function(){};
