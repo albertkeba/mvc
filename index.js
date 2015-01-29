@@ -26,23 +26,26 @@ app.use( express.static(path.join(__dirname, 'public')) );
 app.get('/test', function( req, res, next ){
 	'use strict';
 	//testController.run( req, res, next );
-});*/
-
-/*fs.readdirSync('./controllers').forEach(function( file ){
+});*/  
+/*
+fs.readdirSync('./controllers').forEach(function( file ){
 	'use strict';
 	if ( file.substr(-3) === '.js' )
 	{
 		route = require( './controllers/' + file );
 		route.controller( app );
 	}
-});*/
-
-app.all('/:cnt(/:meth)',function( req, res, next ){
-	'use strict';
-	var urlParts = url.parse( req.url, true );
-	console.log(urlParts,req.params);
-	 res.send('Hello World!');
 });
+//*/
+//app.all();
+/**/
+app.all('/:controller?/:method?/:params?',function( req, res, next ){
+	'use strict';
+
+	console.log(req.params);
+	res.send('Hello World!');
+});
+//*/
 
 http.createServer( app ).listen(3000, function(){
 	'use strict';
