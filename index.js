@@ -4,17 +4,11 @@
 var express	= require('express'),
 	http	= require('http'),
 	path	= require('path'),
-	mysql	= require('mysql'),
 	url		= require('url'),
 	app		= express(),
 	fs		= require('fs'),
-	connection	= mysql.createConnection({
-		host	: 'localhost',
-		user	: 'root',
-		password: ''
-	}),
-	handlebars		= require('express-handlebars'),
-	routes = [];
+	routes	= [],
+	handlebars	= require('express-handlebars');
 
 app.engine('html', handlebars({extname: 'html', defaultLayout: 'main.html'}));
 app.set('view engine', 'html');
@@ -49,4 +43,4 @@ app.all('/:controller?/:method?/:params?',function( req, res, next ){
 	
 });
 
-http.createServer( app ).listen(3000);
+app.listen(3000);

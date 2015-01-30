@@ -8,5 +8,10 @@ module.exports = (function(){
 	
 	Test.prototype = Object.create( BaseModel.prototype );
 	
+	Test.prototype.getUsers = function(){
+		var qr = "SELECT * FROM employees",
+			rs = this.select(qr);
+	};
+	
 	return Test;
 }());	
