@@ -1,7 +1,7 @@
 /*jslint white: true, devel: true*/
 /*global require, module*/
 var Controller = require('../system/core/controller'),
-	UserModel = require('../models/test.js');
+	UserModel = require('../models/test');
 
 module.exports = (function(){
 	'use strict';
