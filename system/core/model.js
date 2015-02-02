@@ -1,33 +1,41 @@
-/*jslint devel: true*/
+/*jslint devel: true, white: true, nomen: true*/
 /*global require,module*/
 var db = require('../../config/db');
 
 module.exports = (function(){
 	'use strict';
-	var _db = null;
 	
-	function Model(){
-		this._db = new db();
-		console.log(this._db);
-	}
+	function Model(){}
 	
-	Model.prototype.select = function( query ){
-		console.log(db);
-		/*this._db.getConnection(function(err, connection){
+	Model.prototype.select = function( query, callback ){
+		//console.log(query);
+		db.getConnection(function(err, connection){
 			if ( ! err )
 			{
-				connection.query( query, function(err, rows){
-					if ( ! err )
-					{
-						return rows;
-					}
-				});
+				if ( query !== undefined )
+				{
+					connection.query( query, function(err, rows){
+						connection.release();
+						
+						if ( ! err )
+						{
+							if ( callback )
+							{
+								callback( err, rows );
+							}
+						}
+					});
+				}
+				else
+				{
+					callback( err );
+				}
 			}
 			else
 			{
-				console.log(err);
+				throw err;
 			}
-		});*/
+		});
 	};
 	
 	return Model;

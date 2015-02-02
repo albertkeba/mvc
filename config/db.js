@@ -1,5 +1,5 @@
+/*jslint white: true*/
 /*global require, module*/
-/*http://stackoverflow.com/questions/19606647/module-exports-scope-and-node-mysql*/
 var mysql = require('mysql'),
 	pool = mysql.createPool({
 		host	: 'localhost',
