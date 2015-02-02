@@ -1,0 +1,1 @@
+Ayant beaucoup travaillé avec des frameworks PHP (CodeIgniter, CakePHP, Kohana Framework), l'idée est de reproduire la structure MVC de ces frameworks
