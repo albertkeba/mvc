@@ -1,7 +1,6 @@
 /*jslint white: true, devel: true*/
 /*global require, module*/
-var Controller = require('../system/core/controller'),
-	UserModel = require('../models/test');
+var Controller = require('../system/core/controller');
 
 module.exports = (function(){
 	'use strict';
@@ -26,8 +25,6 @@ module.exports = (function(){
 	};
 	
 	HomeController.prototype.users = function( req, res, next ){
-		var u = new UserModel().getUsers();
-		
 		res.send('users fn!');
 	};
 	

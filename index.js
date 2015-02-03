@@ -37,7 +37,7 @@ app.all('/:controller?/:method?/:params?',function( req, res, next ){
 	}
 	else
 	{
-		res.send('Hello World!');
+		res.status(404).json('Not found');
 	}
 	
 });

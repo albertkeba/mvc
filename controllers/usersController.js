@@ -30,8 +30,8 @@ module.exports = (function(){
 	/**
 	 * affiche un employe
 	 */
-	UsersController.prototype.user = function( req, res, next, p ){
-		new UserModel().getUser(p, function( result ){
+	UsersController.prototype.user = function( req, res, next, id ){
+		new UserModel().getUser(id, function( result ){
 			if ( req.xhr )
 			{
 				res.send( result );
