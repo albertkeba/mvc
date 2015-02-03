@@ -1,5 +1,9 @@
 /*jslint white: true, devel: true*/
 /*global require, module*/
+/*
+http://esa-matti.suuronen.org/blog/2013/04/15/asynchronous-module-loading-with-browserify/
+http://putaindecode.fr/posts/js/browserify-all-the-things/
+*/
 var Controller = require('../system/core/controller'),
 	UserModel = require('../models/usersModel');
 
@@ -51,6 +55,16 @@ module.exports = (function(){
 		});
 	};
 	//-- eo user
+	
+	UsersController.prototype.adduser = function( req, res, next ){
+		res.render('userform', {title: 'add user'});
+	};
+	
+	UsersController.prototype.add = function( req, res, next ){
+		var formData = req.body;
+		
+		//res.status(201).json()
+	};
 	
 	return UsersController;
 }());

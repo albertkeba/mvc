@@ -6,6 +6,7 @@
 	<link rel='stylesheet' type='text/css' href='/stylesheets/main.css' />
 	<link rel='stylesheet' type='text/css' href='/stylesheets/fa/css/font-awesome.min.css' />
 	<link rel='stylesheet' type='text/css' href='/stylesheets/widgets.css' />
+	<script>var app = {};</script>
 </head>
 <body>
 	<div class="main-container">
@@ -22,15 +23,20 @@
 			closeButton: ".modal_close"
 		});
 		
+		if ( app.init )
+		{
+			app.init();
+		}
+		
 		$('.lastname').on('click', function(){
 			var id = $(this).data('id'),
 				self = $(this);
 			
 			$.ajax({
-				url		: './user/' + id,
+				url		: './users/user/' + id,
 				type	: 'POST',
 				success	: function( rs ){
-					//console.log(rs);
+					console.log(rs);
 					$('#user').html('okokoko');
 				}
 			});

@@ -5,10 +5,13 @@ var express	= require('express'),
 	http	= require('http'),
 	path	= require('path'),
 	url		= require('url'),
+	body	= require('body-parser'),
 	app		= express(),
 	fs		= require('fs'),
 	routes	= [],
-	handlebars	= require('express-handlebars');
+	handlebars	= require('express-handlebars'),
+	parseUrlEncoded = body.urlencoded({extended: false});
+
 
 app
 	.engine('html', handlebars({extname: 'html', defaultLayout: 'main.html'}))
@@ -24,20 +27,27 @@ fs.readdirSync('./controllers').forEach(function( file ){
 });
 
 
-app.all('/:controller?/:method?/:params?',function( req, res, next ){
+app.all('/:controller?/:method?/:params?', parseUrlEncoded, function( req, res, next ){
 	'use strict';
 
-	var c = req.params.controller,
-		m = req.params.method,
-		p = req.params.params;
+	var c = req.params.controller ? (req.params.controller).toLowerCase() : null,
+		m = req.params.method ? (req.params.method).toLowerCase() : null,
+		p = req.params.params ? (req.params.params).toLowerCase() : null;
 	
-	if ( routes.hasOwnProperty(c+'Controller') )
+	if ( c )
 	{
-		new (routes[c+'Controller'])().run( req, res, next, m, p );
+		if ( routes.hasOwnProperty(c+'Controller') )
+		{
+			new (routes[c+'Controller'])().run( req, res, next, m, p );
+		}
+		else
+		{
+			res.status(404).json('404 Not found');
+		}
 	}
 	else
 	{
-		res.status(404).json('Not found');
+		new (routes.usersController)().run( req, res, next, m, p );
 	}
 	
 });
