@@ -1,0 +1,34 @@
+
+<div class="datagrid-box">
+	<div class="datagrid-title-box">
+		<span class="icon">
+			<i class="fa fa-th"></i>
+		</span>
+		<h5>Répertoire de contacts</h5>
+	</div>
+	<div class="datagrid-content-box">
+		<table class="tab-12">
+			<thead>
+				<tr>
+					<th class="tab-3">Nom</th>
+					<th class="tab-3">Prénom</th>
+					<th class="tab-3">Poste</th>
+					<th class="tab-3">Département</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#employees}}
+				<tr>
+					<td class="lastname" data-id="{{id}}">
+						<a href="#user" class="lean" name="user" rel="leanModal">{{lastName}}</a>
+					</td>
+					<td class="firstname">{{firstName}}</td>
+					<td>{{title}}</td>
+					<td>{{department}}</td>
+				</tr>
+				{{/employees}}
+			</tbody>
+		</table>
+	</div>
+</div>
+<div id="user"></div>

@@ -5,7 +5,7 @@ module.exports = (function(){
 	
 	function Controller(){}
 	
-	Controller.prototype.run = function( req, res, next, m ){
+	Controller.prototype.run = function( req, res, next, m, p ){
 		if ( m === undefined )
 		{
 			this.index( req, res, next );
@@ -14,7 +14,7 @@ module.exports = (function(){
 		{
 			if ( typeof this[m] === 'function' )
 			{
-				this[m]( req, res, next );
+				this[m]( req, res, next, p );
 			}
 			else
 			{

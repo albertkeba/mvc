@@ -11,5 +11,31 @@
 	<div class="main-container">
 		{{{body}}}
 	</div>
+	
+	<script type="text/javascript" src="/scripts/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/scripts/jquery.leanModal.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$('.lean').leanModal({
+			top : 200,
+			overlay : 0.4,
+			closeButton: ".modal_close"
+		});
+		
+		$('.lastname').on('click', function(){
+			var id = $(this).data('id'),
+				self = $(this);
+			
+			$.ajax({
+				url		: './user/' + id,
+				type	: 'POST',
+				success	: function( rs ){
+					//console.log(rs);
+					$('#user').html('okokoko');
+				}
+			});
+		});
+	});
+	</script>
 </body>
 </html>
