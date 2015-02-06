@@ -10,5 +10,5 @@ module.exports = (function(){
 	
 	LoginController.prototype = Object.create( Controller.prototype );
 	
-	return LoginController;
+    return LoginController;
 }());

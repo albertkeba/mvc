@@ -38,27 +38,27 @@ module.exports = (function(){
 	 * affiche un employe
 	 */
 	UsersController.prototype.user = function( req, res, next, id ){
-		if ( req.method === 'GET' )
-		{
-			new UserModel().getUser(id, function( result ){
-				if ( req.xhr )
-				{
-					res.send( result );
-				}
-				else
-				{
-					res.render('user', {
-						title: result.firstName + ' ' + result.lastName,
-						employee: {
-							imgsrc		: (result.firstName).toLowerCase() + '_' + (result.lastName).toLowerCase(),
-							firstname	: result.firstName,
-							lastname	: result.lastName,
-							department	: result.department
-						}
-					});
-				}
-			});
-		}
+        if ( req.method === 'GET' )
+        {
+            new UserModel().getUser(id, function( result ){
+                if ( req.xhr )
+                {
+                    res.send( result );
+                }
+                else
+                {
+                    res.render('user', {
+                        title: result.firstName + ' ' + result.lastName,
+                        employee: {
+                            imgsrc		: (result.firstName).toLowerCase() + '_' + (result.lastName).toLowerCase(),
+                            firstname	: result.firstName,
+                            lastname	: result.lastName,
+                            department	: result.department
+                        }
+                    });
+                }
+            });
+        }
 	};
 	//-- eo user
 	
