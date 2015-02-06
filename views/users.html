@@ -32,3 +32,21 @@
 	</div>
 </div>
 <div id="user"></div>
+<script type="text/javascript">
+	app.init = function(){
+		$('.lastname').on('click', function(){
+			console.log('clk');
+			var id = $(this).data('id'),
+				self = $(this);
+
+			$.ajax({
+				url		: './users/user/' + id,
+				type	: 'GET',
+				success	: function( rs ){
+					console.log(rs);
+					$('#user').html('okokoko');
+				}
+			});
+		});
+	};
+</script>

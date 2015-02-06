@@ -23,5 +23,14 @@ module.exports = (function(){
 		}
 	};
 	
+	UsersModel.prototype.addUser = function( post, callback ){
+		if ( callback )
+		{
+			this.insert("INSERT INTO employees SET ?", post, callback);
+		}
+	};
+	
+	UsersModel.prototype.deleteUser = function( callback ){};
+	
 	return UsersModel;
 }());	

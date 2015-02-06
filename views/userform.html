@@ -1,7 +1,7 @@
-<form>
+<form id="addUser" action="post">
 	<legend>User</legend>
-	<input name="firstName">
-	<input name="lastName">
+	<input name="firstname">
+	<input name="lastname">
 	<input type="submit" value="submit" id="submit">
 </form>
 <script type="text/javascript">
@@ -9,19 +9,19 @@ app.init = function(){
 	$('#submit').on('click', function(e){
 		e.preventDefault();
 		
-		var $form = $(this),
-			$data = form.serialize();
+		var $form = $('#addUser'),
+			$data = $form.serialize();
 		
 		$.ajax({
 			type	: 'POST',
-			url		: './users/user/add',
-			data	: data,
+			dataType: 'json',
+			url		: './add',
+			data	: $data,
 			success	: function( r ){
-				form.trigger('reset');
+				console.log(r);
+				$form.trigger('reset');
 			}
 		});
-
-		console.log('sub');
 	});
 }
 </script>

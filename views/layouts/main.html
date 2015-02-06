@@ -27,20 +27,6 @@
 		{
 			app.init();
 		}
-		
-		$('.lastname').on('click', function(){
-			var id = $(this).data('id'),
-				self = $(this);
-			
-			$.ajax({
-				url		: './users/user/' + id,
-				type	: 'POST',
-				success	: function( rs ){
-					console.log(rs);
-					$('#user').html('okokoko');
-				}
-			});
-		});
 	});
 	</script>
 </body>

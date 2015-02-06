@@ -22,12 +22,15 @@ module.exports = (function(){
 	 * affiche la liste des employes
 	 */
 	UsersController.prototype.all = function( req, res, next ){
-		new UserModel().getUsers(function( employees ){
-			res.render('users', {
-				title: 'Repertoire de contacts', 
-				employees: employees
+		if ( req.method === 'GET' )
+		{
+			new UserModel().getUsers(function( employees ){
+				res.render('users', {
+					title: 'Repertoire de contacts', 
+					employees: employees
+				});
 			});
-		});
+		}
 	};
 	//-- eo users
 	
@@ -35,24 +38,27 @@ module.exports = (function(){
 	 * affiche un employe
 	 */
 	UsersController.prototype.user = function( req, res, next, id ){
-		new UserModel().getUser(id, function( result ){
-			if ( req.xhr )
-			{
-				res.send( result );
-			}
-			else
-			{
-				res.render('user', {
-					title: result.firstName + ' ' + result.lastName,
-					employee: {
-						imgsrc		: (result.firstName).toLowerCase() + '_' + (result.lastName).toLowerCase(),
-						firstname	: result.firstName,
-						lastname	: result.lastName,
-						department	: result.department
-					}
-				});
-			}
-		});
+		if ( req.method === 'GET' )
+		{
+			new UserModel().getUser(id, function( result ){
+				if ( req.xhr )
+				{
+					res.send( result );
+				}
+				else
+				{
+					res.render('user', {
+						title: result.firstName + ' ' + result.lastName,
+						employee: {
+							imgsrc		: (result.firstName).toLowerCase() + '_' + (result.lastName).toLowerCase(),
+							firstname	: result.firstName,
+							lastname	: result.lastName,
+							department	: result.department
+						}
+					});
+				}
+			});
+		}
 	};
 	//-- eo user
 	
@@ -60,10 +66,25 @@ module.exports = (function(){
 		res.render('userform', {title: 'add user'});
 	};
 	
+	/**
+	 * ajout d'un nouvel employee
+	 */
 	UsersController.prototype.add = function( req, res, next ){
-		var formData = req.body;
-		
-		//res.status(201).json()
+		if ( req.method === 'POST' && req.xhr )
+		{			
+			new UserModel().addUser(req.body, function( result ){
+				if ( result.success )
+				{
+					res.status(201).json( result );
+				}
+			});	
+		}
+	};
+	//-- add
+	
+	UsersController.prototype.deleteUser = function( req, res, next ){
+		//console.log(req.method); DELETE
+		//res.sendStatus(200)
 	};
 	
 	return UsersController;

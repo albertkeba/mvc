@@ -24,6 +24,24 @@ module.exports = (function(){
 			});
 		});
 	};
+	//-- eo select
+	
+	Model.prototype.insert = function( query, post, callback ){
+		db.getConnection(function( err, connection ){
+			connection.query( query, post, function( err, result ){
+				connection.release();
+				
+				if ( ! err && query && callback )
+				{
+					callback({
+						success : true,
+						insertId: result.insertId
+					});
+				}
+			});
+		});
+	};
+	//-- eo insert
 	
 	return Model;
 }());
