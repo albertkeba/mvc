@@ -1,0 +1,68 @@
+html, body {height: 100%;}
+body
+{
+	
+    background-color: #142849;
+    background-image: -webkit-gradient(radial,center center,0,center center,460,from(#165387),to(#142849));
+    background-image: -webkit-radial-gradient(circle,#165387,#142849);
+    background-image: -moz-radial-gradient(circle,#165387,#142849);
+    background-image: -o-radial-gradient(circle,#165387,#142849);
+    background-image: radial-gradient(circle,#165387,#142849);
+    background-repeat: no-repeat;
+    line-height: 1.42857143;
+    padding-top: 0;
+}
+
+.container
+{
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -300px;
+    margin-right: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+}
+    .container.login {width: 350px;}
+    .container.register {width: auto; max-width: 680px; padding: 40px;}
+
+.logo-name
+{
+    color: #2e6696;
+    font-size: 170px;
+    font-weight: 800;
+    letter-spacing: -10px;
+    text-transform: uppercase;
+}
+
+.panel {border: none; border-radius: 0;}
+.panel-heading
+{
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #3F4245;
+	background-color: #ECECEC;
+	border: medium none;
+	font-size: 12px;
+	border-radius: 0;
+	border-bottom: 1px solid #DDD;
+}
+	.panel-heading .glyphicon-th-list {color: #DB5031;}
+label {font-weight: 400; margin-bottom: 5px;}
+.form-control {border-radius: 0; box-shadow: none;}
+.btn-primary,
+.btn-danger {border: none; box-shadow: none; border-radius: 0;}
+.btn-primary {background: #428BCA;}
+.btn-danger {background: #D9534F;}
+.message-container {display: none;}
+.alert-danger {background: #e7c3c3; background-image: none; box-shadow: none;}
+
+p {padding: 10px; color: #2c6aa0;}
+
+.btn-white {color: inherit; background: white; border: 1px solid #e7eaec;}
+.btn-white:hover, 
+.btn-white:focus, 
+.btn-white:active, 
+.btn-white.active {color: inherit; background: #F3F3F4;}

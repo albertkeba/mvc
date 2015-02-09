@@ -13,7 +13,8 @@
 					<th class="tab-3">Nom</th>
 					<th class="tab-3">Prénom</th>
 					<th class="tab-3">Poste</th>
-					<th class="tab-3">Département</th>
+					<th class="tab-2">Département</th>
+					<th class="tab-1"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,26 +26,43 @@
 					<td class="firstname">{{firstName}}</td>
 					<td>{{title}}</td>
 					<td>{{department}}</td>
+					<td>
+						<a href="#" data-update-id="{{id}}">
+							<span class="icon">
+								<i class="fa fa-pencil"></i>
+							</span>
+						</a>
+						<a href="#" data-update-id="{{id}}">
+							<span class="icon">
+								<i class="fa fa-trash-o"></i>
+							</span>
+						</a>
+					</td>
 				</tr>
 				{{/employees}}
 			</tbody>
 		</table>
 	</div>
 </div>
-<div id="user"></div>
+<div class="modal fade">
+	<div class="modal-dialog"></div>
+</div>
+
 <script type="text/javascript">
 	app.init = function(){
+        var template = null;
+        
+        $.get('/tmpl/modal.html', function( data ){
+            template = Handlebars.compile( data );
+        });
+        
 		$('.lastname').on('click', function(){
-			console.log('clk');
-			var id = $(this).data('id'),
-				self = $(this);
-
 			$.ajax({
-				url		: './users/user/' + id,
+				url		: './users/user/' + $(this).data('id'),
 				type	: 'GET',
 				success	: function( rs ){
-					console.log(rs);
-					$('#user').html('okokoko');
+                    $('.modal-dialog').empty().append( template(rs[0]) );
+                    $('.modal').modal();
 				}
 			});
 		});

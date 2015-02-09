@@ -2,19 +2,19 @@ body
 {
 	background: none repeat scroll 0 0 #F2F2F2;
 	color: #333;
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+	font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif; 
 	font-size: 14px;
 	line-height: 1.42857;
 }
 
-h1
+/*h1
 {
 	color: inherit;
 	font-size: 36px;
 	font-weight: 300;
 	line-height: 44px;
 	margin: 0 0 30px
-}
+}*/
 
 .main-container {margin: 0 auto; max-width: 1280px; padding: 20px;}
 .lastname {text-transform: uppercase;}
@@ -31,11 +31,4 @@ h1
 	z-index:100;
 }
 
-#user {
-width: 600px;
-padding: 30px;
-display: none;
-background: none repeat scroll 0% 0% #FFF;
-border-radius: 5px;
-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
-}
+img {width: 100%;}

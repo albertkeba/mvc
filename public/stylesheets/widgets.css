@@ -60,7 +60,7 @@
 		line-height: 1.42857;
 		padding: 8px;
 	}
-	.datagrid-content-box table tbody > tr > td {border: 1px solid #DDD; font-size: 12px;}
+	.datagrid-content-box table tbody > tr > td {border: 1px solid #DDD; font-size: 12px; border-left: 0;}
 		.datagrid-content-box table tbody > tr:last-child > td {border-bottom: none;}
 		.datagrid-content-box table tbody > tr > td:last-child {border-right: none;}
 		.datagrid-content-box table tbody > tr:hover > td {background-color: #F5F5F5; cursor: pointer;}

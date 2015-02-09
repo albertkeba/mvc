@@ -2,10 +2,13 @@
 <html>
 <head>
 	<title>{{title}}</title>
-	<link rel='stylesheet' type='text/css' href='/stylesheets/reset.css' />
+	<link rel='stylesheet' type='text/css' href='/stylesheets/bootstrap.min.css' />
 	<link rel='stylesheet' type='text/css' href='/stylesheets/main.css' />
 	<link rel='stylesheet' type='text/css' href='/stylesheets/fa/css/font-awesome.min.css' />
-	<link rel='stylesheet' type='text/css' href='/stylesheets/widgets.css' />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+	{{#styles}}
+	<link rel="stylesheet" media="screen" type="text/css" href="/stylesheets/{{.}}.css" />
+	{{/styles}}
 	<script>var app = {};</script>
 </head>
 <body>
@@ -14,15 +17,12 @@
 	</div>
 	
 	<script type="text/javascript" src="/scripts/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/scripts/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="/scripts/js/bootstrap.min.js"></script>
+    {{#scripts}}
+    <script type="text/javascript" src="/scripts/{{.}}.js"></script>
+    {{/scripts}}
 	<script>
-	$(document).ready(function(){
-		$('.lean').leanModal({
-			top : 200,
-			overlay : 0.4,
-			closeButton: ".modal_close"
-		});
-		
+	$(document).ready(function(){	
 		if ( app.init )
 		{
 			app.init();

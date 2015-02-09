@@ -26,6 +26,8 @@ module.exports = (function(){
 		{
 			new UserModel().getUsers(function( employees ){
 				res.render('users', {
+					styles: ['widgets'],
+                    scripts: ['handlebars.min'],
 					title: 'Repertoire de contacts', 
 					employees: employees
 				});
