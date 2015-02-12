@@ -27,12 +27,12 @@
 					<td>{{title}}</td>
 					<td>{{department}}</td>
 					<td>
-						<a href="#" data-update-id="{{id}}">
+						<a href="#" data-user-id="{{id}}" class="update">
 							<span class="icon">
 								<i class="fa fa-pencil"></i>
 							</span>
 						</a>
-						<a href="#" data-update-id="{{id}}">
+						<a href="#" data-user-id="{{id}}" class="delete">
 							<span class="icon">
 								<i class="fa fa-trash-o"></i>
 							</span>
@@ -50,10 +50,18 @@
 
 <script type="text/javascript">
 	app.init = function(){
-        var template = null;
+        Handlebars.registerHelper('xif', function(a, b, options){
+            if ( a === b )
+            {
+                return options.fn( this );
+            }
+        });
+        var templates = {};
         
-        $.get('/tmpl/modal.html', function( data ){
-            template = Handlebars.compile( data );
+        $.each(['modal','form'], function(i, name){
+            $.get('/tmpl/' + name + '.html', function( data ){
+                templates[ name ] = Handlebars.compile( data );
+            });
         });
         
 		$('.lastname').on('click', function(){
@@ -61,10 +69,47 @@
 				url		: './users/user/' + $(this).data('id'),
 				type	: 'GET',
 				success	: function( rs ){
-                    $('.modal-dialog').empty().append( template(rs[0]) );
+                    $('.modal-dialog').empty().append( templates.modal( rs[0] ) );
                     $('.modal').modal();
 				}
 			});
+		});
+		
+		$('.delete').on('click', function(e){
+			e.preventDefault();
+			var $self	= $(this),
+				id		= $(this).data('user-id');
+			
+			bootbox.confirm("Voulez-vous supprimer cet employé?", function(result) {
+				if ( result )
+				{
+					$.ajax({
+						url		: './users/delete/' + id,
+						type	: 'DELETE',
+						success	: function( rs ){
+							if ( rs.success )
+							{
+								$self.closest('tr').remove();
+							}
+						}
+					});
+				}
+			});
+		});
+		
+		$('.update').on('click', function(e){
+			e.preventDefault();
+			var $self	= $(this),
+				id		= $(this).data('user-id');
+            
+            $.ajax({
+				url		: './users/user/' + $(this).data('user-id'),
+				type	: 'GET',
+				success	: function( rs ){
+                    $('.modal-dialog').empty().append( templates.form( rs[0] ) );
+                    $('.modal').modal();
+                }
+            });
 		});
 	};
 </script>

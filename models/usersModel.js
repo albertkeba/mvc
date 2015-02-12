@@ -26,11 +26,16 @@ module.exports = (function(){
 	UsersModel.prototype.addUser = function( post, callback ){
 		if ( callback )
 		{
-			this.insert("INSERT INTO employees SET ?", post, callback);
+			this.insert("INSERT INTO employees SET ?", callback, post);
 		}
 	};
 	
-	UsersModel.prototype.deleteUser = function( callback ){};
+	UsersModel.prototype.deleteUser = function( id, callback ){
+		if ( callback )
+		{
+			this.delete("DELETE FROM employees WHERE id = ?", callback, id);
+		}
+	};
 	
 	return UsersModel;
 }());	

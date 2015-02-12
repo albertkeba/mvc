@@ -7,15 +7,14 @@ module.exports = (function(){
 	
 	function Model(){}
 	
-	Model.prototype.select = function( query, callback ){
+	Model.prototype.query = function( query, callback, data ){
 		db.getConnection(function(err, connection){
-			connection.query( query, function( err, rows ){
+			connection.query( query, data, function( err, result ){
 				connection.release();
 				
 				if ( ! err && query && callback )
 				{
-					//console.log(rows);
-					callback( rows );
+					callback( err, result );
 				}
 				else
 				{
@@ -24,24 +23,42 @@ module.exports = (function(){
 			});
 		});
 	};
-	//-- eo select
+	//-- eo query
 	
-	Model.prototype.insert = function( query, post, callback ){
-		db.getConnection(function( err, connection ){
-			connection.query( query, post, function( err, result ){
-				connection.release();
-				
-				if ( ! err && query && callback )
-				{
-					callback({
-						success : true,
-						insertId: result.insertId
-					});
-				}
-			});
+	Model.prototype.select = function( query, callback ){
+		this.query( query, function( err, result ){
+			if ( result.length > 0 )
+			{
+				callback( result );
+			}
 		});
 	};
-	//-- eo insert
+	//-- select
+	
+	Model.prototype.insert = function( query, callback, post ){
+		this.query( query, function( err, result ){
+			if ( ! err )
+			{
+				callback({
+					success : true,
+					insertId: result.insertId
+				});
+			}
+		}, post);
+	};
+	//-- insert
+	
+	Model.prototype.delete = function( query, callback, id){
+		this.query( query, function( err, result ){
+			if ( ! err )
+			{
+				callback({
+					success: true
+				});
+			}
+		}, [id]);
+	};
+	//-- delete
 	
 	return Model;
 }());
