@@ -1,1 +1,4 @@
 node_modules
+views/login.html
+views/register.html
+controllers/signinController.js
