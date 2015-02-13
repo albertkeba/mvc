@@ -56,7 +56,12 @@
                 return options.fn( this );
             }
         });
+        
         var templates = {};
+        
+        /*$('.modal').on('show.bs.modal', function(e,d){
+            console.log('md show');
+        });*/
         
         $.each(['modal','form'], function(i, name){
             $.get('/tmpl/' + name + '.html', function( data ){
@@ -107,7 +112,10 @@
 				type	: 'GET',
 				success	: function( rs ){
                     $('.modal-dialog').empty().append( templates.form( rs[0] ) );
-                    $('.modal').modal();
+                    $('.modal').modal().find('#test').on('click.callback', function(){
+                        console.log('test');
+                    });
+                    //http://davidrs.com/wp/code-dynamic-modal-with-twitter-bootstrap-and-jquery/
                 }
             });
 		});
