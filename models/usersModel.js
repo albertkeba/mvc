@@ -24,6 +24,7 @@ module.exports = (function(){
 	};
 	
 	UsersModel.prototype.addUser = function( post, callback ){
+        console.log(post);
 		if ( callback )
 		{
 			this.insert("INSERT INTO employees SET ?", callback, post);
@@ -36,6 +37,13 @@ module.exports = (function(){
 			this.delete("DELETE FROM employees WHERE id = ?", callback, id);
 		}
 	};
+    
+    UsersModel.prototype.updateUser = function( post, callback ){
+        if ( callback )
+        {
+            this.update("UPDATE employees SET title= :title, department= :department, officePhone= :officePhone, email= :email WHERE id= :userid", callback, post);
+        }
+    };
 	
 	return UsersModel;
 }());	

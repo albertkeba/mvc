@@ -24,7 +24,7 @@ module.exports = (function(){
 			new UserModel().getUsers(function( employees ){
 				res.render('users', {
 					styles: ['widgets'],
-                    scripts: ['handlebars.min','bootbox.min'],
+                    scripts: ['handlebars.min','bootbox.min','notifyer','users'],
 					title: 'Repertoire de contacts', 
 					employees: employees
 				});
@@ -56,8 +56,8 @@ module.exports = (function(){
 	UsersController.prototype.add = function( req, res, next ){
 		if ( req.method === 'POST' && req.xhr )
 		{			
+            console.log(req.body);
 			new UserModel().addUser(req.body, function( result ){
-				console.log(result);
 				if ( result.success )
 				{
 					res.status(201).json( result );
@@ -65,6 +65,18 @@ module.exports = (function(){
 			});	
 		}
 	};
+    
+    UsersController.prototype.update = function( req, res, next ){
+        if ( req.method === 'PUT' && req.xhr )
+        {
+            new UserModel().updateUser(req.body, function( result ){
+                if ( result.success )
+                {
+                    res.status(201).json( result );
+                }
+            });
+        }
+    };
 	
 	UsersController.prototype.delete = function( req, res, next, id ){
 		if ( req.method === 'DELETE' && req.xhr )

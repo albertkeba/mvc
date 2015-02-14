@@ -23,7 +23,6 @@ module.exports = (function(){
 			});
 		});
 	};
-	//-- eo query
 	
 	Model.prototype.select = function( query, callback ){
 		this.query( query, function( err, result ){
@@ -33,9 +32,9 @@ module.exports = (function(){
 			}
 		});
 	};
-	//-- select
 	
 	Model.prototype.insert = function( query, callback, post ){
+        console.log(query);
 		this.query( query, function( err, result ){
 			if ( ! err )
 			{
@@ -46,7 +45,6 @@ module.exports = (function(){
 			}
 		}, post);
 	};
-	//-- insert
 	
 	Model.prototype.delete = function( query, callback, id){
 		this.query( query, function( err, result ){
@@ -58,7 +56,17 @@ module.exports = (function(){
 			}
 		}, [id]);
 	};
-	//-- delete
+    
+    Model.prototype.update = function( query, callback, post ){
+        this.query( query, function( err, result ){
+            if ( ! err )
+            {
+                callback({
+					success: true
+				});
+            }
+        }, post);
+    };
 	
 	return Model;
 }());

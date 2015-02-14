@@ -66,6 +66,9 @@
 		.datagrid-content-box table tbody > tr:hover > td {background-color: #F5F5F5; cursor: pointer;}
 		.datagrid-content-box table tbody > tr:nth-child(2n+1) > td {background-color: #FCFCFC;}
 
+    .datagrid-content-box table tfoot > tr > td {border-top: 1px solid #DDD; text-align: right;}
+        .datagrid-content-box table tfoot .icon .fa-user-plus {color: #1fa67a;}
+
 .fa
 {
 	display: inline-block;
