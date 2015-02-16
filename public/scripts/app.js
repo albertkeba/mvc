@@ -1,19 +1,19 @@
 /*jslint white: true*/
 /*global $, Handlebars, bootbox*/
 var app = {
-	alert	: function( message, callback ){
+	alert: function( message, callback ){
 		'use strict';
 		if ( bootbox )
 		{
 			bootbox.alert( message, callback );
 		}
 	},
-	config	: {
+	config: {
 		base_url: 'http://localhost:3000/',
 		inModal	: true,
         tmplExt	: '.html'
 	},
-	confirm	: function( message, callback ){
+	confirm: function( message, callback ){
 		'use strict';
 		if ( bootbox )
 		{
@@ -22,20 +22,17 @@ var app = {
 	},
 	notifyer: {
 		$elem: null,
-		hideHandler: null,
 		init: function( selector ){
 			'use strict';
 			this.$elem = $(selector);
 		},
 		show: function( message ){
 			'use strict';
-			clearTimeout( this.hideHandler );
-			
 			this.$elem.find('span').html( message );
 			this.$elem.delay(100).fadeIn().delay(1000).fadeOut();
 		}
 	},
-	prompt	: function( message, callback ){
+	prompt: function( message, callback ){
 		'use strict';
 		if ( bootbox )
 		{

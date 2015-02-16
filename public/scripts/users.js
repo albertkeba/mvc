@@ -70,8 +70,12 @@ app.user = {
 			url		: base_url + 'add/',
 			data	: $data,
 			success	: function( r ){
-				//console.log(r);
-				$form.trigger('reset');
+				if ( r.success )
+                {
+                    app.notifyer.show('Ajout effectué');
+				    $form.trigger('reset');
+                    $('.modal').modal('hide');
+                }
 			}
 		});
 	},

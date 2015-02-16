@@ -12,7 +12,7 @@ module.exports = (function(){
 	UsersModel.prototype.getUsers = function( callback ){
 		if ( callback )
 		{
-			this.select( "SELECT * FROM employees", callback );
+			this.select( "SELECT * FROM employees ORDER BY lastName", callback );
 		}
 	};
 	

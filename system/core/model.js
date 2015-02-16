@@ -35,7 +35,6 @@ module.exports = (function(){
 	};
 	
 	Model.prototype.insert = function( query, callback, post ){
-        console.log(query);
 		this.query( query, function( err, result ){
 			if ( ! err )
 			{
