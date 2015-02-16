@@ -24,17 +24,16 @@ module.exports = (function(){
 	};
 	
 	UsersModel.prototype.addUser = function( post, callback ){
-        console.log(post);
 		if ( callback )
 		{
-			this.insert("INSERT INTO employees SET ?", callback, post);
+			this.insert("INSERT INTO employees SET firstName=:firstName, lastName=:lastName, title=:title, department=:department, officePhone=:officePhone, email=:email", callback, post);
 		}
 	};
 	
 	UsersModel.prototype.deleteUser = function( id, callback ){
 		if ( callback )
 		{
-			this.delete("DELETE FROM employees WHERE id = ?", callback, id);
+			this.delete("DELETE FROM employees WHERE id="+id, callback);
 		}
 	};
     

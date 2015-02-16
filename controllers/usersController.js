@@ -24,7 +24,7 @@ module.exports = (function(){
 			new UserModel().getUsers(function( employees ){
 				res.render('users', {
 					styles: ['widgets'],
-                    scripts: ['handlebars.min','bootbox.min','notifyer','users'],
+                    scripts: ['handlebars.min','bootbox.min','app','users'],
 					title: 'Repertoire de contacts', 
 					employees: employees
 				});
@@ -42,8 +42,9 @@ module.exports = (function(){
                 }
                 else
                 {
-                    result = result[0];
-                    res.json(result);
+                    res.render('user', {
+						employee: result[0]
+					});
                 }
             });
         }
@@ -55,8 +56,7 @@ module.exports = (function(){
 	
 	UsersController.prototype.add = function( req, res, next ){
 		if ( req.method === 'POST' && req.xhr )
-		{			
-            console.log(req.body);
+		{
 			new UserModel().addUser(req.body, function( result ){
 				if ( result.success )
 				{

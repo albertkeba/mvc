@@ -69,6 +69,8 @@
     .datagrid-content-box table tfoot > tr > td {border-top: 1px solid #DDD; text-align: right;}
         .datagrid-content-box table tfoot .icon .fa-user-plus {color: #1fa67a;}
 
+	.datagrid-content-box table a:hover {text-decoration: none;}
+
 .fa
 {
 	display: inline-block;
@@ -76,6 +78,8 @@
 	font-style: normal;
 	font-weight: normal;
 	line-height: 1;
+	font-size: 12px;
+	padding: 2px;
 }
 
 img {border: 1px solid #CDCDCD; padding: 2px;}

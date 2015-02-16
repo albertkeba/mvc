@@ -8,7 +8,11 @@
 	<div class="modal-body">
 		<div class="row">
 			<div class="col-md-3 col-sm-3 col-xs-3 picture">
-				<img alt="{{lastName}} {{firstName}}" src="/img/{{picture}}" />
+				{{#if picture}}
+				<img alt="{{lastName}} {{firstName}}" src="http://localhost:3000/img/{{picture}}" />
+				{{else}}
+				<img alt="" src="http://localhost:3000/img/photo.jpg" />
+				{{/if}}
 			</div>
 			<div class="col-md-9 col-sm-9 col-xs-9">
 				<ul class="list-group">

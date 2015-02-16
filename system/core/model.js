@@ -18,7 +18,8 @@ module.exports = (function(){
 				}
 				else
 				{
-					throw err;
+                    console.log(err);
+					//throw err;
 				}
 			});
 		});

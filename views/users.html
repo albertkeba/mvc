@@ -21,9 +21,11 @@
 				{{#employees}}
 				<tr>
 					<td class="lastname" data-id="{{id}}">
-						<a href="#" class="lean" name="user" rel="leanModal">{{lastName}}</a>
+						{{lastName}}
 					</td>
-					<td class="firstname">{{firstName}}</td>
+					<td class="firstname" data-id="{{id}}">
+						{{firstName}}
+					</td>
 					<td>{{title}}</td>
 					<td>{{department}}</td>
 					<td>
@@ -44,7 +46,7 @@
             <tfoot>
                 <tr>
                     <td colspan="5">
-                        <a href="#" id="add-user">
+                        <a href="#" id="add-user" title="test">
                             <span class="icon">
                                 <i class="fa fa-user-plus"></i>
                             </span>
